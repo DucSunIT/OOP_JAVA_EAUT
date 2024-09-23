@@ -1,0 +1,18 @@
+package eaut.sach;
+
+public class HoaDon extends Ma {
+	private int maHoaDon;
+	private String tenKH;
+	private int soLuong;
+	private int giaBan;
+
+	public HoaDon(int maSach, int maNhaSanXuat, int maTacGia, int maHoaDon, String tenKH, int soLuong, int giaBan) {
+		super(maSach, maNhaSanXuat, maTacGia);
+		// TODO Auto-generated constructor stub
+		this.maHoaDon = maHoaDon;
+		this.tenKH = tenKH;
+		this.soLuong = soLuong;
+		this.giaBan = giaBan;
+	}
+
+}

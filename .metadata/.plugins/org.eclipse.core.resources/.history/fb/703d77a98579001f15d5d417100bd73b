@@ -1,0 +1,34 @@
+package eaut.test;
+
+import controller.NhaXuatBan;
+
+public class Test {
+	public static void main(String[] args) {
+//		MoBangSach mbs = new MoBangSach();
+//		mbs.connectDB();
+//		System.out.println("-----------------");
+//		mbs.printInfo();
+//		System.out.println("-----------------");
+//		mbs.updateInfo();
+//		System.out.println("-----------------");
+//		mbs.printInfo();
+//		System.out.println("-----------------");
+//		mbs.deleteDaTa();
+//		mbs.printInfo();
+//		System.out.println("--------DUCSUNIT---------");
+		NhaXuatBan nxb = new NhaXuatBan();
+//		nxb.connectDB();
+//		System.out.println("-----------------");
+//		nxb.printInfo();
+//		System.out.println("-----------------");
+//		nxb.updateInfo();
+//		System.out.println("-----------------");
+//		nxb.printInfo();
+//		System.out.println("-----------------");
+//		nxb.deleteDaTa();
+//		System.out.println("-----------------");
+//		nxb.printInfo();
+nxb.statisicalData();
+	}
+
+}

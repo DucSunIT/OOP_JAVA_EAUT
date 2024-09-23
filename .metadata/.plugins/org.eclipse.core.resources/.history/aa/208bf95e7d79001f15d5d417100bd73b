@@ -1,0 +1,46 @@
+package controller;
+
+import java.sql.Connection;
+import java.util.Scanner;
+
+import eaut.database.HandleDatabase;
+
+public class NhaXuatBan {
+	Scanner sc = new Scanner(System.in);
+	HandleDatabase hddb = new HandleDatabase();
+
+	// method connect database
+	public void connectDB() {
+		Connection con = hddb.getConnect("localhost", "QL_SACH");
+		if (con != null) {
+			System.out.println(">>> Connect sucessfull");
+		} else {
+			System.out.println(">>> Connect fail");
+		}
+	}
+
+	// method print info table SACH
+	public void printInfo() {
+		String sql = "SELECT * FROM SACH";
+		hddb.excuteQuery(sql);
+	}
+
+	// method update quantity by id
+	public void updateInfo() {
+		String sql = "UPDATE SACH SET SoLuong = ? WHERE MaSach = ? ";
+		int id, quantity;
+		System.out.println("Enter id: ");
+		id = sc.nextInt();
+		System.out.println("Enter quantity: ");
+		quantity = sc.nextInt();
+		hddb.updateData(sql, id, quantity);
+	}
+
+	// method delete by id
+	public void deleteDaTa() {
+		String sql = "DELETE FROM SACH WHERE MaSach = ?";
+		System.out.println("Enter id to delete: ");
+		int id = sc.nextInt();
+		hddb.deleteData(sql, id);
+	}
+}

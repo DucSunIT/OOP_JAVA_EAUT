@@ -1,0 +1,85 @@
+package study.sql;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class Example {
+	static Scanner sc = new Scanner(System.in);
+	static Connection conn = null;
+
+	// method connect
+	public static Connection getConnect(String server, String databaseName) {
+
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conURL = "jdbc:sqlserver://" + server + ":1433;databasename=" + databaseName
+					+ ";user=sa;password=admin;encrypt=true;trustservercertificate=true";
+			conn = DriverManager.getConnection(conURL);
+		} catch (SQLException e) {
+			System.out.println("SQL Exception: " + e.toString());
+		} catch (ClassNotFoundException cE) {
+			System.out.println("Class Not Found Exception: " + cE.toString());
+		}
+		return conn;
+	}
+
+	public static void excuteQuery(String sql) {
+		try {
+			Statement state = conn.createStatement();
+			ResultSet result = state.executeQuery(sql);
+			System.out.println("MaTG" + "\t" + "HoTen" + "\t" + "NamSinh" + "\t" + "QueQuan");
+			while (result.next()) {
+				System.out.println(result.getString("MaTG") + " - " + result.getString("HoTen") + " - "
+						+ result.getString("NamSinh") + " - " + result.getString("QueQuan"));
+			}
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void addData() {
+		System.out.println("Nhập mã tác giả: ");
+		int mtg = sc.nextInt();
+		System.out.println("Nhập họ tên:");
+		String ht = sc.nextLine();
+		System.out.println("Nhập năm sinh:");
+		int ns = sc.nextInt();
+		System.out.println("Nhập quê quán: ");
+		String qq = sc.nextLine();
+		String sql = "INSERT INTO TACGIA(MaTG,HoTen,NamSinh,QueQuan)" + "VALUES(MaTG,HoTen,NamSinh,QueQuan)";
+
+		try {
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setString(6, ht);
+			pstm.setString(ns, qq);
+
+			int row = pstm.executeUpdate();
+			if (row != 0) {
+				System.out.println("Add data suscessfull !");
+			}
+			conn.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void main(String[] args) {
+		Connection connect = getConnect("localhost", "QL_SACH");
+		if (connect != null) {
+			System.out.println("Connect successfull");
+		} else {
+			System.out.println("Connect fail");
+		}
+
+		excuteQuery("SELECT * FROM TACGIA");
+	}
+}

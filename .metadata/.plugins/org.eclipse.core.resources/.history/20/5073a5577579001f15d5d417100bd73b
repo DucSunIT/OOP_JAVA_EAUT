@@ -1,0 +1,15 @@
+package eaut.sach;
+
+public class TacGia extends Ma {
+	private String hoTen;
+	private int namSinh;
+	private String queQuan;
+
+	public TacGia(int maTacGia, String hoTen, int namSinh, String queQuan) {
+		super(maTacGia);
+		this.hoTen = hoTen;
+		this.namSinh = namSinh;
+		this.queQuan = queQuan;
+	}
+
+}

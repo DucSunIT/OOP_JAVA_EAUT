@@ -1,0 +1,12 @@
+package controller;
+
+import java.util.Scanner;
+
+public class ChuongTrinhChinh {
+	Scanner sc = new Sacnner(System.in);
+	public void mainProgram() {
+		do {
+			
+		}while();
+	}
+}

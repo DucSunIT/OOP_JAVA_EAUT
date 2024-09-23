@@ -1,0 +1,19 @@
+package controller;
+
+import java.sql.Connection;
+
+import eaut.database.ConnectDB;
+
+public class MoBangSach {
+	ConnectDB cndb = new ConnectDB();
+
+	public void connectDB() {
+		Connection con = cndb.getConnect("localhost", "QL_SACH");
+		if(con!=null) {
+			System.out.println("Connect sucessfull");
+		}
+		else {
+			System.out.println("Connect fail");
+		}
+	}
+}

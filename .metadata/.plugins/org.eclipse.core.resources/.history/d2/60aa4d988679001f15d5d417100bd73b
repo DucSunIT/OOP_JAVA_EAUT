@@ -1,0 +1,34 @@
+package controller;
+
+import java.util.Scanner;
+
+public class ChuongTrinhChinh {
+	Scanner sc = new Scanner(System.in);
+	int choice = 0;
+
+	public void mainProgram() {
+		do {
+			System.out.println("-------MENU-----");
+			System.out.println("1.SÁCH");
+			System.out.println("2.NHÀ XUẤT BẢN");
+			System.out.println(">>> Nhập lựa chọn");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1: {
+				System.out.println("-------MENU SÁCH -----");
+				System.out.println("1.Lấy dữ liệu");
+				System.out.println("2.Thêm dữ liệu");
+				System.out.println("3.Xóa dữ liệu");
+				System.out.println("4. Thoát");
+				
+				break;
+			}
+			case 2: {
+				break;
+			}
+			default:
+				System.out.println("ERROR !");
+			}
+		} while (choice != 2);
+	}
+}

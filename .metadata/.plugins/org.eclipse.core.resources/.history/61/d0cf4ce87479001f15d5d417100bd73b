@@ -1,0 +1,15 @@
+package eaut.sach;
+
+public class Sach extends Ma {
+	
+	private String tenSach;
+	private String theLoai;
+	private int namXuatBan;
+	private int soLuong;
+	
+	public Sach(int maSach, int maNhaSanXuat, int maTacGia) {
+		super(maSach, maNhaSanXuat, maTacGia);
+		
+	}
+
+}

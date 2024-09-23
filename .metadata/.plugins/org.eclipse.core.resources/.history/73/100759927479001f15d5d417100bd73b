@@ -1,0 +1,39 @@
+
+public class Ma {
+	private int maSach;
+	private int maNhaSanXuat;
+	private int maTacGia;
+	
+	public Ma(int maSach, int maNhaSanXuat, int maTacGia) {
+		this.maSach = maSach;
+		this.maNhaSanXuat = maNhaSanXuat;
+		this.maTacGia = maTacGia;
+	}
+
+	public int getMaSach() {
+		return this.maSach;
+	}
+
+	public void setMaSach(int maSach) {
+		this.maSach = maSach;
+	}
+
+	public int getMaNhaSanXuat() {
+		return this.maNhaSanXuat;
+	}
+
+	public void setMaNhaSanXuat(int maNhaSanXuat) {
+		this.maNhaSanXuat = maNhaSanXuat;
+	}
+
+	public int getMaTacGia() {
+		return this.maTacGia;
+	}
+
+	public void setMaTacGia(int maTacGia) {
+		this.maTacGia = maTacGia;
+	}
+	
+	
+}
+

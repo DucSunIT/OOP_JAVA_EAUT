@@ -1,0 +1,14 @@
+package eaut.sach;
+
+public class NhaSanXuat extends Ma {
+	private String tenNXB;
+	private String diaChi;
+
+	public NhaSanXuat(int maSach, int maNhaSanXuat, int maTacGia, String tenNXB, String diaChi) {
+		super(maSach, maNhaSanXuat, maTacGia);
+		// TODO Auto-generated constructor stub
+		this.tenNXB = tenNXB;
+		this.diaChi = diaChi;
+	}
+
+}

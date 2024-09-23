@@ -1,0 +1,104 @@
+package eaut.database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class HandleDatabase {
+	private Connection conn = null;
+	private Statement state = null;
+	private PreparedStatement pstm = null;
+	private ResultSet res = null;
+	private ResultSetMetaData rsmd = null;
+
+	// connect database
+	public Connection getConnect(String server, String databaseName) {
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conURL = "jdbc:sqlserver://" + server + ":1433;databasename=" + databaseName
+					+ ";user=sa;password=admin;encrypt=true;trustservercertificate=true";
+			conn = DriverManager.getConnection(conURL);
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("SQL Exception: " + e.toString());
+		} catch (ClassNotFoundException cE) {
+			System.out.println("Class Not Found Exception: " + cE.toString());
+		}
+		return conn;
+	}
+
+	// method connect database
+	public void connectDB() {
+		Connection con = getConnect("localhost", "QL_SACH");
+		if (con != null) {
+			System.out.println(">>> Connect sucessfull");
+		} else {
+			System.out.println(">>> Connect fail");
+		}
+	}
+
+	// query information
+	public void excuteQuery(String sql) {
+		try {
+			state = conn.createStatement();
+			res = state.executeQuery(sql);
+			rsmd = res.getMetaData();
+			// number of column in table
+			int numberOfColumns = rsmd.getColumnCount();
+			while (res.next()) {
+				StringBuilder stbd = new StringBuilder();
+				for (int i = 1; i <= numberOfColumns; i++) {
+					stbd.append(res.getString(i));
+					if (i < numberOfColumns) {
+						stbd.append(" - ");
+					}
+				}
+				System.out.println(stbd.toString());
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+
+	// update data
+	public void updateData(String sql, Object... args) {
+		try {
+			pstm = conn.prepareStatement(sql);
+			for (int i = 0; i < args.length; i++) {
+				pstm.setObject(i + 1, args[i]);
+			}
+			int row = pstm.executeUpdate();
+			if (row != 0) {
+				System.out.println(">>> Update sucessfull");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+	}
+
+	// delete data
+	public void deleteData(String sql, Object... args) {
+		try {
+			pstm = conn.prepareStatement(sql);
+			for (int i = 0; i < args.length; i++) {
+				pstm.setObject(i + 1, args[i]);
+			}
+			int row = pstm.executeUpdate();
+			if (row != 0) {
+				System.out.println(">>> Delete sucessfull");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+	}
+
+}

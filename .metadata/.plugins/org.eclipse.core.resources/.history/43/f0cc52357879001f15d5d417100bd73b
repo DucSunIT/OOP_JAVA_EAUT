@@ -1,0 +1,22 @@
+package controller;
+
+import java.sql.Connection;
+
+import eaut.database.HandleDatabase;
+
+public class MoBangSach {
+	HandleDatabase hddb = new HandleDatabase();
+
+	public void connectDB() {
+		Connection con = hddb.getConnect("localhost", "QL_SACH");
+		if (con != null) {
+			System.out.println("Connect sucessfull");
+		} else {
+			System.out.println("Connect fail");
+		}
+	}
+
+	public void printInfo() {
+		hddb.excuteQuery(null);
+	}
+}

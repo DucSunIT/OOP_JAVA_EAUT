@@ -1,0 +1,11 @@
+package controller;
+
+import eaut.database.ConnectDB;
+
+public class MoBangSach {
+	ConnectDB cndb = new ConnectDB();
+
+	public void connectDB() {
+
+	}
+}
